@@ -26,7 +26,7 @@ static char g_driver_name[] = "3DSP USB Bus Driver";
 static char g_complie_datetime[] = "Build " __TIME__ ", " __DATE__;
 UCHAR g_dbg_level = 5;
 
-int tdspbus_ioctl( struct inode *inode, struct file *pfile, unsigned int cmd, unsigned long arg );
+long tdspbus_unlocked_ioctl( struct file *pfile, unsigned int cmd, unsigned long arg );
 int tdspbus_open( struct inode *inode, struct file *pfile );
 int tdspbus_release( struct inode *inode, struct file *pfile );
 void SetGlogalFdoData( PFDO_DEVICE_DATA pFdoData );
@@ -34,7 +34,7 @@ FDO_DEVICE_DATA *GetGlogalFdoData( void );
 	
 static struct file_operations tdspbus_fops =
 {
-    .owner = THIS_MODULE, .ioctl = tdspbus_ioctl, .open = tdspbus_open, .release = tdspbus_release,
+    .owner = THIS_MODULE, .unlocked_ioctl = tdspbus_unlocked_ioctl, .open = tdspbus_open, .release = tdspbus_release,
 };
 
 VOID TDSP_GetRfType( PFDO_DEVICE_DATA FdoData )
@@ -469,4 +469,3 @@ EXPORT_SYMBOL( unregister_tdspbus_usbdev );
 
 module_init( tdspbus_init_module );
 module_exit( tdspbus_cleanup_module );
-
