@@ -98,7 +98,7 @@ int tdspbus_release( struct inode *inode, struct file *pfile )
     return status;
 }
 
-int tdspbus_ioctl( struct inode *inode, struct file *pfile, unsigned int cmd, unsigned long arg )
+int tdspbus_unlocked_ioctl( struct file *pfile, unsigned int cmd, unsigned long arg )
 {
     NTSTATUS status;
     ULONG inlen, outlen;
@@ -111,7 +111,7 @@ int tdspbus_ioctl( struct inode *inode, struct file *pfile, unsigned int cmd, un
 
     if ( pfile->private_data != fdoData )
     {
-        Bus_DebugPrint( "tdspbus_ioctl is called,param verify failed!file=0x%p.\n", pfile );
+        Bus_DebugPrint( "tdspbus_unlocked_ioctl is called,param verify failed!file=0x%p.\n", pfile );
 	return  - EFAULT;
     }
 
@@ -124,7 +124,7 @@ int tdspbus_ioctl( struct inode *inode, struct file *pfile, unsigned int cmd, un
 
     if ( fdoData->DevicePowerState != PowerDeviceD0 )
     {
-        Bus_DebugPrint( "tdspbus_ioctl is called but the power state of fdo is not actived!fdoData=0x%p.\n", fdoData );
+        Bus_DebugPrint( "tdspbus_unlocked_ioctl is called but the power state of fdo is not actived!fdoData=0x%p.\n", fdoData );
 	return  - EFAULT;
     }
 
@@ -744,7 +744,7 @@ int tdspbus_ioctl( struct inode *inode, struct file *pfile, unsigned int cmd, un
                 //TDSP_WriteToReg( fdoData, TDSP_WIRELESS_POWRE_ON_OFF, 1 );
                 //TDSP_GetPowerLevel( fdoData );
                 fdoData->PowerLevel = 1;
-                Bus_DebugPrint( "tdspbus_ioctl is called!cmd= IOCTL_BUSENUM_SET_TEST_POWER_ON,level=%d,PowerState=%d!\n", fdoData->PowerLevel, TDSP_GetCurrentBusPowerState( fdoData ));
+                Bus_DebugPrint( "tdspbus_unlocked_ioctl is called!cmd= IOCTL_BUSENUM_SET_TEST_POWER_ON,level=%d,PowerState=%d!\n", fdoData->PowerLevel, TDSP_GetCurrentBusPowerState( fdoData ));
                 status = STATUS_SUCCESS;
                 //Irp->IoStatus.Information = 0;
                 break;
@@ -755,7 +755,7 @@ int tdspbus_ioctl( struct inode *inode, struct file *pfile, unsigned int cmd, un
                 //TDSP_WriteToReg( fdoData, TDSP_WIRELESS_POWRE_ON_OFF, 0 );
                 //TDSP_GetPowerLevel( fdoData );
                 fdoData->PowerLevel = 0;
-                Bus_DebugPrint( "tdspbus_ioctl is called!cmd= IOCTL_BUSENUM_SET_TEST_POWER_OFF,level=%d,PowerState=%d!\n", fdoData->PowerLevel, TDSP_GetCurrentBusPowerState( fdoData ));
+                Bus_DebugPrint( "tdspbus_unlocked_ioctl is called!cmd= IOCTL_BUSENUM_SET_TEST_POWER_OFF,level=%d,PowerState=%d!\n", fdoData->PowerLevel, TDSP_GetCurrentBusPowerState( fdoData ));
                 status = STATUS_SUCCESS;
                 //Irp->IoStatus.Information = 0;
                 break;
@@ -1085,4 +1085,3 @@ int tdspbus_ioctl( struct inode *inode, struct file *pfile, unsigned int cmd, un
 //    Bus_DecIoCount( fdoData );
     return status;
 }
-
