@@ -49,6 +49,12 @@
 #include <linux/usb/quirks.h>
 #endif
 
+#if LINUX_VERSION_CODE >= KERNEL_VERSION(2,6,26) 
+#include <linux/semaphore.h> 
+#else 
+#include <asm/semaphore.h> 
+#endif
+
 #define USBVENDOR_DSP						0x05e1
 #define USBDEVICE_DSP						0x0100
 
@@ -624,7 +630,7 @@ static int _bluetooth_usb_probe(struct usb_interface *intf, const struct usb_dev
 	void * pBusInterface;
 	int e;
 
-	init_MUTEX(&openLock);
+	sema_init(&openLock,1);
   
 	if (!id->driver_info) 
 	{
@@ -862,4 +868,3 @@ MODULE_LICENSE("GPL");
 
 module_init(_bluetooth_usb_init);
 module_exit(_bluetooth_usb_exit);
-
