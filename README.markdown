@@ -19,5 +19,9 @@ If you don't use git, just download the source from Github, extract it and run I
     $ cd 3dsp
     $ sudo bash Install_3DSP.sh
 
+If you are using Ubuntu with Unity desktop, the uWB and Wifi Radar icon will not appear in the systray. You will have to do one aditional step, that you can find it here:
+
+(In spanish): http://tuamigotetieneganas.blogspot.com/2011/04/unity-area-de-notificacion-systray.html
+
 If you have any question, contact me: reyiyo [at] gmail [dot] net
 
