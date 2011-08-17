@@ -23,5 +23,5 @@ If you are using Ubuntu with Unity desktop, the uWB and Wifi Radar icon will not
 
 (In spanish): http://tuamigotetieneganas.blogspot.com/2011/04/unity-area-de-notificacion-systray.html
 
-If you have any question, contact me: reyiyo [at] gmail [dot] net
+If you have any question, contact me: reyiyo [at] gmail [dot] com
 
