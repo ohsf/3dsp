@@ -1,4 +1,4 @@
-#!/usr/bin/python -OO
+#!/usr/bin/python2 -OO
 #
 #   $Id: wifi-radar,v 1.21 2010/07/09 08:35:27 hank.wang Exp $
 #    vi:set filetype=python noet:
