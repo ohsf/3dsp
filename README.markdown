@@ -1,6 +1,6 @@
 #Modified 3DSP driver source
 
-I tried to compile the 3DSP source available at [reyiyo repository](http://github.com/reyiyo/3dsp.git), but it didn't work with Ubuntu 12.04, so I made some changes in the code and it works :)
+I tried to compile the 3DSP source available at [reyiyo repository](http://github.com/reyiyo/3dsp.git), but it didn't work with Ubuntu 12.04, so I made some changes in the code and it works for me.
 
 First, you should install all dependencies:
 
