@@ -76,9 +76,9 @@ void show_notification(const gchar * summary, const gchar * message, const gchar
     g_signal_handlers_destroy(notify);
     notify_notification_close(notify, NULL);
   }
-
+   notify = notify_notification_new(summary, message,NULL);
   // notify = notify_notification_new(summary, message, "3dspusbWB", NULL);
-  notify = notify_notification_new_with_status_icon(summary, message, "3dspusbWB", statusicon);
+  //notify = notify_notification_new_with_status_icon(summary, message, "3dspusbWB", statusicon);
 
 //#ifdef TIMEOUTANDACTION
   if (!g_IsNotifyOsd)
