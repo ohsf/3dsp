@@ -35,7 +35,7 @@ gboolean is_notify_osd()
   gboolean retval = FALSE;
 
   notify_get_server_info(&name, &vendor, &version, &spec_version);
-  g_print("Name: %s\t", name);
+  g_print("Nome: %s\t", name);
 //  retval = !(g_strcmp0("notify-osd", name));
   retval = !(strcmp("notify-osd", name));
   g_free((gpointer) name);
@@ -47,11 +47,11 @@ gboolean is_notify_osd()
 
   if (g_IsNotifyOsd)
   {
-    g_print("is  notify-osd\n");
+    g_print("e  notify-osd\n");
   }
   else
   {
-    g_print("not notify-osd\n");
+    g_print("nao e notify-osd\n");
   }
 
   return retval;
