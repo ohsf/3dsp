@@ -4,7 +4,8 @@ I tried to compile the 3DSP source available at [reyiyo repository](http://githu
 
 First, you should install all dependencies:
 
-    $ sudo apt-get install build-essential linux-headers-`uname -r` libnotify-dev libgtk2.0* blueman dhcpcd libgnome2-dev git
+    $ sudo apt-get install build-essential linux-headers-`uname -r` libnotify-dev libgtk2.0* blueman dhcpcd libgnome2-dev 
+      git
 
 With all dependencies satisfied, just clone this git repository: 
 
