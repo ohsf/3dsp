@@ -271,13 +271,13 @@ GtkWidget *create_menu1(void)
   gtk_container_add(GTK_CONTAINER(menu1), wlan1);
   gtk_tooltips_set_tip(tooltips, wlan1, _("WLAN"), NULL);
 
-  coexist1 = gtk_check_menu_item_new_with_mnemonic(_("_Coexist"));
+  coexist1 = gtk_check_menu_item_new_with_mnemonic(_("_Combo"));
   if (g_allowedmodes[2])
     gtk_widget_show(coexist1);
   gtk_container_add(GTK_CONTAINER(menu1), coexist1);
   gtk_tooltips_set_tip(tooltips, coexist1, _("Bluetooth e Wlan"), NULL);
 
-  unplug1 = gtk_check_menu_item_new_with_mnemonic(_("_Unplug"));
+  unplug1 = gtk_check_menu_item_new_with_mnemonic(_("_Desconectar"));
   gtk_widget_show(unplug1);
   gtk_container_add(GTK_CONTAINER(menu1), unplug1);
   gtk_tooltips_set_tip(tooltips, unplug1, _("Bluetooth e Wlan"), NULL);
@@ -287,12 +287,12 @@ GtkWidget *create_menu1(void)
   gtk_container_add(GTK_CONTAINER(menu1), _________1);
   gtk_widget_set_sensitive(_________1, FALSE);
 
-  about1 = gtk_menu_item_new_with_mnemonic(_("_About"));
+  about1 = gtk_menu_item_new_with_mnemonic(_("_Sobre"));
   gtk_widget_show(about1);
   gtk_container_add(GTK_CONTAINER(menu1), about1);
   gtk_tooltips_set_tip(tooltips, about1, _("Sobre"), NULL);
 
-  exit1 = gtk_menu_item_new_with_mnemonic(_("E_xit"));
+  exit1 = gtk_menu_item_new_with_mnemonic(_("_Sair"));
   gtk_widget_show(exit1);
   gtk_container_add(GTK_CONTAINER(menu1), exit1);
   gtk_tooltips_set_tip(tooltips, exit1, _("Sair"), NULL);
