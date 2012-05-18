@@ -97,7 +97,7 @@
 #		   then plug in the device, wifi-radar would not detect the action. 
 #		   Detect the device automatitic in scanning_thread	20100630
 #		5. if a AP is set to "not broadcast ssid", then wifi-radar not show it, but a new profile with the ssid can not be created because access_points still include it.
-#0.3.8		1. Inicio da Tradução da interface com o usuário para Português Brasileiro.
+
 
 import time, os, signal, sys, re, ConfigParser, threading, socket, thread
 #Spear add the line below @version 0.2.9 to show notification
@@ -180,11 +180,11 @@ WPA_SUPPLICANT_PIDFILE	= "/var/run/wpa_supplicant.pid"
 
 #####################################
 # Labels
-USE_DHCP_LABEL	= "Usar DHCP(Configuração Automática)"
-USE_IP_LABEL	= "Configuração Manual da Rede"
+USE_DHCP_LABEL	= "Usar DHCP(Configuracao Automatica)"
+USE_IP_LABEL	= "Configuracao Manual da Rede"
 WIFI_SET_BSS	= "Conectar a um BSS"
 WIFI_SET_IBSS		= "Conectar a um IBSS"
-POSTPRE_LABEL	= "Comandos de Conexão"
+POSTPRE_LABEL	= "Comandos de Conexao"
 WIFI_MODES		= ['Master', 'Ad-Hoc' ]
 #Spear mask the line off and add new ones @version 0.2.2
 #WIFI_SECURITY	= [ '', 'Aberta', 'Restrita' ]
@@ -193,7 +193,7 @@ WIFI_ENCRYPTION	= [ 'TKIP', 'CCMP' ]
 #Spear add end
 WIFI_CHANNELS	= [ '', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14' ]
 #Spear add the line below @version 0.0.7
-WIFI_REGIONS	= [ 'USA', 'Europa', 'Japão', 'RestodoMundo' ]
+WIFI_REGIONS	= [ 'USA', 'Europa', 'Japao', 'RestodoMundo' ]
 ####################################################################################################
 
 ####################################################################################################
@@ -431,7 +431,7 @@ def scanning_thread( lock = None ):
 		# get the current ssid
 		curr_ssid = get_current_ssid()
 #		if __debug__:
-#			print "Conexão atual é ", curr_ssid, curr_ip, sleep_timer, first_scan
+#			print "Conexao atual e ", curr_ssid, curr_ip, sleep_timer, first_scan
 		if curr_ssid:
 			if curr_ssid != current_ssid:
 				first_scan = 0
@@ -733,9 +733,9 @@ def connect_to_preferred():
 					break
 
 			if not found_one:
-				say( "Não encontrada rede preferencial" )
+				say( "Nao encontrada rede preferencial" )
 				if __debug__:
-					print "   Não encontrada rede preferencial"
+					print "   Nao encontrada rede preferencial"
 					print access_points
 		else:
 			for apname in confFile.sections():
@@ -797,7 +797,7 @@ def get_current_ssid():
 		return 'None'
 
 	if __debug__:				
-		print "get_current_ssid: não encontrou ssid !!!"
+		print "get_current_ssid: nao encontrou ssid !!!"
 	return False
 
 #Spear add the lines below @version 0.0.9 to set wpa_supplicant.conf
@@ -840,14 +840,14 @@ def set_config_to_wpa_conf_file(essid, key, key_id):
 		s1 = "ctrl_interface=/var/run/wpa_supplicant\nctrl_interface_group=0\n\nnetwork={\n\tssid=" + "\""+essid + "\"\n\t"
 		
 		if False:
-			print "@@@enc usado é ",  access_points[ essid ]['encrypted']
-			print "@@@wep usado é ",  access_points[ essid ]['wep_enabled']
-			print "@@@auty suite é",  access_points[ essid ]['auth_suite']
-			print "@@@auty version é",  access_points[ essid ]['auth_version']
-			print "@@@grp cipher é",    access_points[ essid ]['group_cipher']
-			print "@@@pairwise suite é", access_points[ essid ]['pairwise_cipher']
-			print "@@@enc usado é ",  access_points[ essid ]['encrypted']
-			print "@@@wep usado é ",  access_points[ essid ]['wep_enabled']
+			print "@@@enc usado e ",  access_points[ essid ]['encrypted']
+			print "@@@wep usado e ",  access_points[ essid ]['wep_enabled']
+			print "@@@auty suite e",  access_points[ essid ]['auth_suite']
+			print "@@@auty version e",  access_points[ essid ]['auth_version']
+			print "@@@grp cipher e",    access_points[ essid ]['group_cipher']
+			print "@@@pairwise suite e", access_points[ essid ]['pairwise_cipher']
+			print "@@@enc usado e ",  access_points[ essid ]['encrypted']
+			print "@@@wep usado e ",  access_points[ essid ]['wep_enabled']
 
 		if (access_points[ essid ]['encrypted'] == True):
 			if (access_points[ essid ]['wep_enabled'] == True):
@@ -947,7 +947,7 @@ def connect_to_network( essid, key, key_id, status_win ):
 	mode	= profile['mode']
 	if mode == 'Ad-Hoc':
 		#if __debug__:
-		print "Definindo o modo de conexão ", mode
+		print "Definindo o modo de conexao ", mode
 		os.spawnlp( os.P_WAIT, 'iwconfig', IWCONFIG_COMMAND, INTERFACE, 'mode', mode )
 
 		#Spear: only set channel in IBSS
@@ -955,7 +955,7 @@ def connect_to_network( essid, key, key_id, status_win ):
 		channel	= profile['channel']
 		if channel != '':
 			#if __debug__:
-			print "Definindo o canal de conexão ", channel
+			print "Definindo o canal de conexao ", channel
 			os.spawnlp( os.P_WAIT, 'iwconfig', IWCONFIG_COMMAND, INTERFACE, 'channel', channel )
 
 	if status_win:
@@ -984,7 +984,7 @@ def connect_to_network( essid, key, key_id, status_win ):
 			wpa_options.extend( wpa_args.split() )
 			wpa_options.append( INTERFACE )
 			if __debug__:
-				print "Opções WPA: %s" % ( wpa_options, )
+				print "Opcoes WPA: %s" % ( wpa_options, )
 
 			#Spear mask the two lines below @version 0.2.9
 			#if status_win:
@@ -1012,7 +1012,7 @@ def connect_to_network( essid, key, key_id, status_win ):
 		# Some cards require a commit
 		if COMMIT_REQUIRED:
 			if __debug__:
-				print "Salvar Definições"
+				print "Salvar Definicoes"
 			#os.spawnlp( os.P_WAIT, 'iwconfig', IWCONFIG_COMMAND, INTERFACE, 'commit' )
 			iwconfig_args.append( 'commit' )
 		if __debug__:
@@ -1058,7 +1058,7 @@ def connect_to_network( essid, key, key_id, status_win ):
 		# get ip in dhcp_thread
 		dhcp_flag = True
 		if status_win:
-			status_win.update_message("Obtendo Endereço IP")
+			status_win.update_message("Obtendo Endereco IP")
 
 		while dhcp_flag and (not exit_flag):
 			if status_win:
@@ -1068,15 +1068,15 @@ def connect_to_network( essid, key, key_id, status_win ):
 
  		if not get_current_ip():
  			if status_win:
- 				status_win.update_message("Não foi possivel obter IP!")
+ 				status_win.update_message("Nao foi possivel obter IP!")
 				pulse_process_bar()
  				time.sleep(2)
  			else:
- 				print "Não foi possivel obter IP!"
+ 				print "Nao foi possivel obter IP!"
 			dhcp_not_get_ip = True
  		else:
  			if status_win:
- 				status_win.update_message("Endereço IP Obtido!")
+ 				status_win.update_message("Endereco IP Obtido!")
 				pulse_process_bar()
  				time.sleep(2)
 	else:
@@ -1150,7 +1150,7 @@ def	disconnect_interface():
 	# Kill off any existing WPA_SUPPLICANT clients running
 	if os.access( WPA_SUPPLICANT_PIDFILE, os.R_OK):
 		#if __debug__:
-		print "Finalizando WPA_SUPPLICANT existente para usuário desconectado..."
+		print "Finalizando WPA_SUPPLICANT existente para usuario desconectado..."
 		try:
 			if not WPA_SUPPLICANT_KILL_COMMAND == '':
 				os.spawnlp( os.P_WAIT, WPA_SUPPLICANT_KILL_COMMAND, WPA_SUPPLICANT_KILL_COMMAND )
@@ -1182,7 +1182,7 @@ def	disconnect_interface():
 		print 'Limpando o IP da interface'
 	os.spawnlp( os.P_WAIT, 'ifconfig', IFCONFIG_COMMAND, INTERFACE, '0.0.0.0' )
 	if __debug__:
-		print 'Desconexão efetuada com sucesso!'
+		print 'Desconexao efetuada com sucesso!'
 
 def get_profile_from_conf_file( essid ):
 	global config_options
@@ -1343,7 +1343,7 @@ def update_domain( domain ):
 	elif domain == 'Europa':
 		WIFI_CHANNELS	= [ '', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13']
 		iwpriv_args.append( 'domain 1' )
-	elif domain == 'Japão':
+	elif domain == 'Japao':
 		WIFI_CHANNELS	= [ '', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14']
 		iwpriv_args.append( 'domain 2' )
 	elif domain == 'RestodoMundo':
@@ -1388,13 +1388,14 @@ class Wifi_radar_tray:
 
 		actions = [
     	('Menu',  None, 'Menu'),
-			('Conectando Wireless', gtk.STOCK_CONNECT, 'Conectando Wireless', None, 'action1 para teste', self.on_view_network),
-			('action2', None, 'action2', None, 'action2 para teste', self.on_action),
+
+			('Wireless connecting', gtk.STOCK_CONNECT, 'Conectando Wireless', None, 'action1 for test', self.on_view_network),
+			('action2', None, 'action2', None, 'action2 for test', self.on_action),
 			#Spear modify the line below @version 0.2.7 temply
 			#('Help', gtk.STOCK_HELP, 'Help', None, 'About', self.on_help),
-			('Ajuda', gtk.STOCK_HELP, 'Ajuda', None, 'Sobre', None),
-			('Sobre', gtk.STOCK_ABOUT, 'Sobre', None, 'Sobre', self.on_about),
-			('Sair', gtk.STOCK_QUIT, 'Sair', None, 'Sair', self.on_quit)
+			('Help', gtk.STOCK_HELP, 'Ajuda', None, 'About', None),
+			('About', gtk.STOCK_ABOUT, 'Sobre', None, 'About', self.on_about),
+			('Quit', gtk.STOCK_QUIT, 'Sair', None, 'Quit', self.on_quit)
 		]
 
 		ag = gtk.ActionGroup('Actions')
@@ -1448,7 +1449,7 @@ class Wifi_radar_tray:
 		else:
 			driver_verion = ''
 		if __debug__:			
-			print "Versão do Driver: ", driver_verion
+			print "Versao do Driver: ", driver_verion
 	
 		dialog = gtk.AboutDialog()
 		#Spear modify the lines below @version 0.2.7
@@ -1460,7 +1461,7 @@ class Wifi_radar_tray:
 
 		#Spear add the lines below @version 0.2.7
 		if driver_verion != '':
-			driver_ver = "Versão do Driver " + driver_verion
+			driver_ver = "Versao do Driver " + driver_verion
 		copyright = 'Copyright (C) 1998-2008 Free Software Foundation, Inc.'
 		if driver_verion != '':
 			comments = comment1 + '\n' + driver_ver + '\n' + copyright
@@ -1534,7 +1535,7 @@ class radar_window:
 		self.close_button = gtk.Button( "Fechar", gtk.STOCK_CLOSE )
 		self.close_button.show()
 		self.close_button.connect( 'clicked', self.delete_event, None  )
-		self.preferences_button = gtk.Button( "Preferências", gtk.STOCK_PREFERENCES )
+		self.preferences_button = gtk.Button( "Preferencias", gtk.STOCK_PREFERENCES )
 		self.preferences_button.show()
 		self.preferences_button.connect( 'clicked', self.edit_preferences, None )
 		#                            apname known_icon      known available wep_icon signal_level    mode protocol
@@ -1594,7 +1595,7 @@ class radar_window:
 		self.connect_button.connect( 'clicked', self.connect_profile, None  )
 	
 		#
-		self.disconnect_button = gtk.Button( "Disconectar" )
+		self.disconnect_button = gtk.Button( "Desconectar" )
 		self.disconnect_button.connect( 'clicked', self.disconnect_profile, None  )
 		
 		# lets add our widgets
@@ -1844,7 +1845,7 @@ class radar_window:
 			p.wregions.set_active( 0 )
 		elif domain == "Europa":
 			p.wregions.set_active( 1 )
-		elif domain == "Japão":
+		elif domain == "Japao":
 			p.wregions.set_active( 2 )
 		elif domain == "RestodoMundo":
 			p.wregions.set_active( 3 )
@@ -1886,7 +1887,7 @@ class radar_window:
 			elif active == 1:
 				DEFAULT_REGION = "Europa"
 			elif active == 2:
-				DEFAULT_REGION = "Japão"
+				DEFAULT_REGION = "Japao"
 			elif active == 3:
 				DEFAULT_REGION = "RestodoMundo"
 			#restore new selection to config file
@@ -1917,7 +1918,7 @@ class radar_window:
 		wifi_table.set_col_spacings( 3 )
 		
 		# The sec labels
-		l = gtk.Label( 'Tipo de Segurança' )
+		l = gtk.Label( 'Tipo de Seguranca' )
 		wifi_table.attach( l, 0, 1, 0, 1 )
 
 		# The security combo boxes
@@ -1994,7 +1995,7 @@ class radar_window:
 						gtk.DIALOG_DESTROY_WITH_PARENT | gtk.DIALOG_MODAL,
 						gtk.MESSAGE_ERROR,
 						gtk.BUTTONS_OK,
-						"Já Existe um perfil para %s " % profile['ssid'] )
+						"Ja Existe um perfil para %s " % profile['ssid'] )
 						dlg.run()
 						dlg.destroy()
 						del dlg
@@ -2144,7 +2145,7 @@ class radar_window:
 					gtk.DIALOG_DESTROY_WITH_PARENT | gtk.DIALOG_MODAL,
 					gtk.MESSAGE_QUESTION,
 					gtk.BUTTONS_YES_NO,
-					"Esta rede não tem perfil configurado.\n\nGostaria de confirar um agora?" )
+					"Esta rede nao tem perfil configurado.\n\nGostaria de confirar um agora?" )
 				res = dlg.run()
 				dlg.destroy()
 				del dlg
@@ -2311,7 +2312,7 @@ class radar_window:
 			#Spear modified the lines below @version 0.2.3
 			if profile['key_valid'] == True:
 				if __debug__:
-					print "Conteúdo da chave do perfil: ", profile['key_content']
+					print "Conteudo da chave do perfil: ", profile['key_content']
 					print "Chave: ", key_id
 				connect_to_network( ssid, profile['key_content'], key_id, connect_status_window )
 			else:
@@ -2449,7 +2450,7 @@ class preferences_dialog:
 #		self.w_scan_timeout.set_snap_to_ticks(True)
 #		self.w_scan_timeout.set_wrap(False)
 #		self.tooltips.set_tip(self.w_scan_timeout, "Por quanto tempo o WiFi Radar deve procurar por access points?")
-#		self.w_scan_timeout_label = gtk.Label("Tempo máximo de Scan (em secondos)")
+#		self.w_scan_timeout_label = gtk.Label("Tempo maximo de Scan (em secondos)")
 #		self.w_hbox2 = gtk.HBox(False, 0)
 		#Spear mask the lines below off @version 0.2.6
 		#self.w_hbox2.pack_start(self.w_scan_timeout_label, False, False, 5)
@@ -2463,9 +2464,9 @@ class preferences_dialog:
 		self.wregions = gtk.combo_box_new_text()
 		for wregions in WIFI_REGIONS:
 			self.wregions.append_text( wregions )
-#		self.tooltips.set_tip(self.wregions, "Selecione a Região")
+#		self.tooltips.set_tip(self.wregions, "Selecione a Regiao")
 		
-		self.region_label = gtk.Label("Região")
+		self.region_label = gtk.Label("Regiao")
 		self.w_hbox3 = gtk.HBox(False, 0)
 		self.w_hbox3.pack_start(self.region_label, False, False, 5)
 		self.w_hbox3.pack_start(self.wregions, True, True, 0)
@@ -2534,7 +2535,7 @@ class key_dialog:
 		key_table.attach( info2, 1, 2, 0, 1 )
 		
 		# The key content textboxes
-		key_label = gtk.Label( "Key" )
+		key_label = gtk.Label( "Chave" )
 		key_table.attach( key_label, 0, 1, 1, 2 )
 		
 		self.key_content = gtk.Entry( 64 )
@@ -2543,7 +2544,7 @@ class key_dialog:
 		self.key_content.connect('focus-in-event', self.on_key_activate)
 	
 		# The key confirmation label
-		key_confim = gtk.Label( 'Confirmação' )
+		key_confim = gtk.Label( 'Confirmacao' )
 		key_table.attach( key_confim, 0, 1, 2, 3 )
 		
 		# The key content confirm textboxes
@@ -2575,7 +2576,7 @@ class key_dialog:
 		key_content = self.key_content.get_text().strip()
 		key_confirm = self.key_content_confirm.get_text().strip()
 		if key_content != key_confirm:
-			self.faild_reason = "Chaves não são identicas!"
+			self.faild_reason = "Chaves nao sao identicas!"
 			return False
 		
 		key_len = len(key_content)
@@ -2584,14 +2585,14 @@ class key_dialog:
 		if key_info == 'WEP':
 			if(key_len != 5 and key_len != 13 and key_len != 10 and key_len != 26):
 				self.faild_reason = "Criptografia WEP precisa de uma chave de 40 ou 104 bits, \
-													 5 ou 13 caracteres ASCII e 10 ou 26 caracteres Hexadecimais são permitidos"
+													 5 ou 13 caracteres ASCII e 10 ou 26 caracteres Hexadecimais sao permitidos"
 				return False
 				
 			if(key_len == 10 or key_len == 26):
 				hex_wep_pattern = re.compile( "[^a-f0-9A-F]", re.I | re.M  | re.S )
 				if hex_wep_pattern.search( key_content ):
 					self.faild_reason = "Criptografia WEP precisa de uma chave de 40 ou 104 bits, \
-													5 ou 13 caracteres ASCII e 10 ou 26 caracteres Hexadecimais são permitidos"
+													5 ou 13 caracteres ASCII e 10 ou 26 caracteres Hexadecimais sao permitidos"
 					return False
 				
 		elif (key_info == 'WPA' or key_info == 'RSN'):
@@ -2692,7 +2693,7 @@ class profile_dialog:
 		ip_table.attach( l, 0, 1, 2, 3 )
 		
 		#Spear mask the lines below @version 0.2.6
-		#l = gtk.Label( 'Domínio' )
+		#l = gtk.Label( 'Dominio' )
 		#ip_table.attach( l, 0, 1, 3, 4 )
 		#Spear mask end
 		
@@ -2894,7 +2895,7 @@ class profile_dialog:
 class status_window:
 	def __init__( self ):
 		global wifi_radar_icon
-		self.dialog = gtk.Dialog(title="Funcionando", flags=gtk.DIALOG_MODAL)
+		self.dialog = gtk.Dialog(title="Conectando", flags=gtk.DIALOG_MODAL)
 	
 		icon = gtk.gdk.pixbuf_new_from_inline( len( wifi_radar_icon[0] ), wifi_radar_icon[0], False )
 		self.dialog.set_icon( icon )
@@ -3036,7 +3037,7 @@ else:
 	#Spear add the lines below @version 0.0.7
 	try: DEFAULT_REGION	= confFile.get		( "DEFAULT", "domain" )
 	except: confFile.set("DEFAULT", "domain", DEFAULT_REGION )
-	print "Inicializador: O Dominio é ", DEFAULT_REGION
+	print "Inicializador: O Dominio e ", DEFAULT_REGION
 	#Spear add end
 	try: SPEAK_UP		= confFile.getboolean	( "DEFAULT", "speak_up" )
 	except: confFile.set("DEFAULT", "speak_up", SPEAK_UP )
@@ -3574,13 +3575,13 @@ if __name__ == "__main__":
 		confFile.write( fd )
 		fd.close()
 	except:
-		print >> sys.stderr, "Autenticação para executar 3dsp-wifi-radar falhou!"
+		print >> sys.stderr, "Autenticacao para executar 3dsp-wifi-radar falhou!"
 		dlg = gtk.MessageDialog(
 					None,
 					gtk.DIALOG_DESTROY_WITH_PARENT | gtk.DIALOG_MODAL,
 					gtk.MESSAGE_ERROR,
 					gtk.BUTTONS_OK,
-					"É necessario usar o comando sudo para executar 3dsp-wifi-radar")
+					"e necessario usar o comando sudo para executar 3dsp-wifi-radar")
 		dlg.set_keep_above(True)
 		dlg.run()
 		dlg.destroy()
@@ -3590,7 +3591,7 @@ if __name__ == "__main__":
 
 	# Are we in configure mode?
 	if len( sys.argv ) > 1 and ( sys.argv[1] == '--version' or sys.argv[1] == '-v' ):
-		print "Versão do WiFi-Radar %s" % WIFI_RADAR_VERSION
+		print "Versao do WiFi-Radar %s" % WIFI_RADAR_VERSION
 	elif len( sys.argv ) > 1 and ( sys.argv[1] == '--daemon' or sys.argv[1] == '-d' ):
 		scanning_thread()
 		connect_to_preferred()
@@ -3601,17 +3602,16 @@ if __name__ == "__main__":
 			configure()
 		#Spear add the lines below @version 0.2.5
 		else:
-			print '3DSP WiFi Radar já está sendo executado!'
+			print '3DSP WiFi Radar ja esta sendo executado!'
 			dlg = gtk.MessageDialog(
 						None,
 						gtk.DIALOG_DESTROY_WITH_PARENT | gtk.DIALOG_MODAL,
 						gtk.MESSAGE_ERROR,
 						gtk.BUTTONS_OK,
-						"3DSP WiFi Radar já está sendo executado!")
+						"3DSP WiFi Radar ja esta sendo executado!")
 			dlg.set_keep_above(True)
 			dlg.run()
 			dlg.destroy()
 			del dlg
 		#Spear add end
-
 
