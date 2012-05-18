@@ -163,7 +163,7 @@ void on_bluetooth_activate(GtkMenuItem * menuitem, gpointer user_data)
   adjust_menu_item(MODE_BLUETOOTH);
   enable_wb_menu();
   refresh_gui_and_timeout();
-  show_notification(_("uWB Aviso"), _("Mudar para modo Bluetooth"), NULL, SWITCH_NOTIFY_TIME, NULL);
+  show_notification(_("uWB Aviso"), _("Ativado modo Bluetooth"), NULL, SWITCH_NOTIFY_TIME, NULL);
   call_shell_for_btEnv(TDSPSHELLFILEFORBT);
 
   g_isclickinginprogress = FALSE;
@@ -321,7 +321,7 @@ void on_wlan1_activate(GtkMenuItem * menuitem, gpointer user_data)
   enable_wb_menu();
   refresh_gui_and_timeout();
   g_isclickinginprogress = FALSE;
-  show_notification(_("uWB Aviso"), _("Mudar para o modo WLAN"), NULL, SWITCH_NOTIFY_TIME, NULL);
+  show_notification(_("uWB Aviso"), _("Ativado modo WLAN"), NULL, SWITCH_NOTIFY_TIME, NULL);
   return;
 }
 
@@ -356,7 +356,7 @@ void on_coexist1_activate(GtkMenuItem * menuitem, gpointer user_data)
   {
     adjust_menu_item(MODE_COEXIST);
     g_isclickinginprogress = FALSE;
-    debug("on_coexist_active, retorno para o modo atual tambem e COEXIST\n");
+    debug("on_coexist_active, retorno para o modo atual tambem e COMBO\n");
     enable_wb_menu();
     return;
   }
@@ -539,7 +539,7 @@ void on_coexist1_activate(GtkMenuItem * menuitem, gpointer user_data)
   enable_wb_menu();
   refresh_gui_and_timeout();
 
-  show_notification(_("uWB Aviso"), _("Mudar para modo COEXIST"), NULL, SWITCH_NOTIFY_TIME, NULL);
+  show_notification(_("uWB Aviso"), _("Ativado modo COMBO"), NULL, SWITCH_NOTIFY_TIME, NULL);
   g_isclickinginprogress = FALSE;
   call_shell_for_btEnv(TDSPSHELLFILEFORBT);
   return;
@@ -591,7 +591,7 @@ void on_unplug1_activate(GtkMenuItem * menuitem, gpointer user_data)
   enable_wb_menu();
   refresh_gui_and_timeout();
   g_isclickinginprogress = FALSE;
-  show_notification(_("uWB Aviso"), _("Mudar para modo desconectado"), NULL, SWITCH_NOTIFY_TIME, NULL);
+  show_notification(_("uWB Aviso"), _("Dispositivos desconectados"), NULL, SWITCH_NOTIFY_TIME, NULL);
 //  show_notification(_("wbusb Notice"), _("switch to unplug state"), _("OK"), 0, NULL);
   return;
 }
@@ -605,7 +605,7 @@ void on_about1_activate(GtkMenuItem * menuitem, gpointer user_data)
 
 void on_exit1_activate(GtkMenuItem * menuitem, gpointer user_data)
 {
-  show_notification(_("uWB Aviso"), _("uWB Sair"), NULL, 0, NULL);
+  show_notification(_("uWB Aviso"), _("Saindo do uWB"), NULL, 0, NULL);
   sleep(2);
   gtk_main_quit();
 }
