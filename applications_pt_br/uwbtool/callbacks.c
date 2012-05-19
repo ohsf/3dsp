@@ -1,5 +1,5 @@
 /*********************************************************************** 
- * FILENAME:     chamadaback.c          
+ * FILENAME:     callback.c          
  * CREATE DATE:  2008/09/05 
  * PURPOSE:      uwbtool, run under shell 
  *                ... 
@@ -22,7 +22,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "chamadabacks.h"
+#include "callbacks.h"
 #include "myhead.h"
 
 void on_bluetooth_activate()
