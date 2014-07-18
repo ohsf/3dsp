@@ -662,7 +662,7 @@ static int _bluetooth_usb_probe(struct usb_interface *intf, const struct usb_dev
 				ep->desc.bEndpointAddress & USB_DIR_IN ? " IN" : "OUT");
 	}
 
-	printk("%s: sc is %x\n", __FUNCTION__, (unsigned int)&syscall);
+	printk("%s: sc is %p\n", __FUNCTION__, &syscall);
 	b_syscall_set((PSYS_CALL)&syscall);
 
 
@@ -675,7 +675,7 @@ static int _bluetooth_usb_probe(struct usb_interface *intf, const struct usb_dev
 	usb_info.EP_bulkin_Rx = INDEX_EP_BULK_IN_DATA;
 	usb_info.EP_interrupt = INDEX_EP_INTR;
 
-	printk("%s: usb_info is %x\n", __FUNCTION__, (unsigned int)&usb_info);
+	printk("%s: usb_info is %p\n", __FUNCTION__, &usb_info);
 	if(NULL == (devExt= Bluetooth_Adap_Create((PUSB_INFO)&usb_info, udev, intf)))
 	{
 		printk("%s: Usb device Init failed \n",__FUNCTION__);
