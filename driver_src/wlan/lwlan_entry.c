@@ -252,10 +252,10 @@ static int _wlan_usb_probe(struct usb_interface *intf, const struct usb_device_i
 
    
 	//syscall.print           =  printk;
-	printk("tdsp_spin_lock_init is %x,syscall's is %x\n",
-            (unsigned int)tdsp_spin_lock_init,
-            (unsigned int)syscall.spin_lock_init);  
-	printk("sc is %x\n",(unsigned int)&syscall);
+	printk("tdsp_spin_lock_init is %p,syscall's is %p\n",
+            tdsp_spin_lock_init,
+            syscall.spin_lock_init);
+	printk("sc is %p\n",&syscall);
 	syscall_set((PSYS_CALL)&syscall);
     
     //fill usb device info
@@ -267,7 +267,7 @@ static int _wlan_usb_probe(struct usb_interface *intf, const struct usb_device_i
 	usb_info.EP_bulkin       = USB_EP_BULKIN;
 	usb_info.EP_interrupt    = USB_EP_BULKINT;
 
-	printk("usb_info is %x\n",(unsigned int)&usb_info);
+	printk("usb_info is %p\n",&usb_info);
 	if(NULL == (pAdap = Adap_Create((PUSB_INFO)&usb_info)))
 	{
 		printk("[%s] Usb device Init failed \n",__FUNCTION__);

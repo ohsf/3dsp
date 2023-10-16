@@ -1,6 +1,8 @@
 #Modified 3DSP driver source
 
-I tried to compile the 3DSP source available at [3DSP official page](http://www.3dsp.com.cn), but it didn't work with Ubuntu 11.04, so I made some changes in the code and it works :)
+This is a fork of reyiyo's updated 3DSP driver. He modified it to build on Ubuntu 11.04. I have further modified it to work with 3.x kernels (tested against 3.11.0). I tested this in Ubuntu 13.10, but it should work in all recent distros shipping a 3.x kernel.
+
+The original source was found at the [3DSP official page](http://www.3dsp.com.cn), but it is no longer available.
 
 First, you should install all dependencies:
 
